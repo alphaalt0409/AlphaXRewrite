@@ -12,13 +12,13 @@ local setreadonly = setreadonly or function(mt, tf)
 end
 setreadonly(mt, false)
 
-hook(mt.__index, newcclosure(function(...)
-      local method = getnamecallmethod()
-      if method:lower() == 'kick' then
-                return
-      end
-      return index(...)    
-end))
+mt.__index = newcclosure(function(...)
+    local method = getnamecallmethod()
+    if method == 'Kick' then
+        return
+    end
+    return index(...)    
+end)
 
 hook(game:GetService("Players").LocalPlayer.Kick, newcclosure(function()
     wait(9e99)

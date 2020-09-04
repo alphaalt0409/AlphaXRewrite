@@ -13,14 +13,13 @@ end
 setreadonly(mt, false)
 
 mt.__index = newcclosure(function(...)
-    local method = getnamecallmethod()
-    if method == 'Kick' then
+    local method = getnamecallmethod() or ''
+    if method:lower() == 'kick' then
         return
     end
     return index(...)    
 end)
 
 hook(game:GetService("Players").LocalPlayer.Kick, newcclosure(function()
-    wait(9e99)
     return
 end))

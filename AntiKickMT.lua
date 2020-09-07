@@ -1,5 +1,5 @@
 if getconnections then
-  if getconnections(game.ReplicatedStorage.Interaction:FindFirstChild("Ban") then
+  if game.ReplicatedStorage.Interaction:FindFirstChild("Ban") then
     for i, v in pairs(getconnections(game.ReplicatedStorage.Interaction:FindFirstChild("Ban").AncestryChanged)) do
       v:Disable()
     end

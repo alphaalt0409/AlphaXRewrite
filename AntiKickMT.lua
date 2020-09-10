@@ -2,7 +2,9 @@ local getconnections = get_signal_cons or getconnections
 if getconnections then
   if game.ReplicatedStorage.Interaction:FindFirstChild("Ban") then
     for i, v in pairs(getconnections(game.ReplicatedStorage.Interaction:FindFirstChild("Ban").AncestryChanged)) do
-      v:Disconnect()
+      if not pcall(function() v:Disable() end) then
+        v:Disconnect()
+      end
     end
   end
 else

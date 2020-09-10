@@ -2,7 +2,11 @@ local getconnections = get_signal_cons or getconnections
 if getconnections then
   if game.ReplicatedStorage.Interaction:FindFirstChild("Ban") then
     for i, v in pairs(getconnections(game.ReplicatedStorage.Interaction:FindFirstChild("Ban").AncestryChanged)) do
-      v:Disable()
+      if syn and (not is_sirhurt_closure) then
+        v:Disable()
+      else
+        v:Disconnect()
+      end
     end
   end
 else
